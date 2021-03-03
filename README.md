@@ -5,6 +5,6 @@
 
 A simple module for [FoundryVtt](https://foundryvtt.com/) that allows dragging playlist soundtracks from the sidebar and dropping them onto the map as ambient sounds.
 
-<!-- ![Inspire Courage Demo](./demo.gif) -->
+![Playlist Drag and Drop Demo](./playlist-drag-and-drop-demo.gif)
 
 *Bootstrapped with: [Foundry Project Creator CLI](https://gitlab.com/foundry-projects/foundry-pc/create-foundry-project) - Which is simply awesome, many thanks!
