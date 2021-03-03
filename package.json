@@ -1,8 +1,8 @@
 {
   "private": true,
   "name": "playlist-drag-and-drop",
-  "version": "0.1.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Foundry Vtt module for dragging playlist soundtracks from the sidebar and dropping them onto the map as ambient sounds.",
   "scripts": {
     "package": "gulp package",
     "build": "gulp build && gulp link",
