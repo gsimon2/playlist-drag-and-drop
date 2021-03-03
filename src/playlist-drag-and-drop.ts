@@ -8,10 +8,6 @@ Hooks.once('init', async function() {
 });
 
 Hooks.on("renderPlaylistDirectory", (app, html: JQuery, data) => {
-	if (!game.settings.get('playlist-drag-and-drop', 'enable-drag-and-drop')) {
-		return;
-	}
-
 	const soundElements = html.find('li.sound.flexrow');
 	soundElements.each((index: number, el: HTMLElement) => {
 		try {
@@ -42,10 +38,10 @@ const addSoundToSoundLayer = (dataSoundId: string, e: DragEvent) => {
 		x: 0,
 		y: 0,
         path: soundPath,
-        radius: 20,
-        easing: true,
-        repeat: true,
-        volume: 1.0
+        radius: game.settings.get('playlist-drag-and-drop', 'default-radius'),
+        easing: game.settings.get('playlist-drag-and-drop', 'enable-easing'),
+        repeat: game.settings.get('playlist-drag-and-drop', 'enable-repeat'),
+        volume: game.settings.get('playlist-drag-and-drop', 'default-volume')
     };
 
 	convertXYtoCanvas(data, e);
