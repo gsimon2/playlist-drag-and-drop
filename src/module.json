@@ -1,0 +1,32 @@
+{
+  "name": "playlist-drag-and-drop",
+  "title": "playlist-drag-and-drop",
+  "description": "",
+  "version": "0.1.0",
+  "author": "",
+  "authors": [
+    {
+      "name": "",
+      "email": "",
+      "url": ""
+    }
+  ],
+  "scripts": [],
+  "esmodules": [
+    "playlist-drag-and-drop.js"
+  ],
+  "styles": [
+    "playlist-drag-and-drop.css"
+  ],
+  "packs": [],
+  "languages": [],
+  "minimumCoreVersion": "0.7.0",
+  "compatibleCoreVersion": "0.7.9",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "",
+  "readme": "",
+  "bugs": "",
+  "changelog": ""
+}
