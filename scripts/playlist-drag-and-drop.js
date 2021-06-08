@@ -1,4 +1,4 @@
-import { registerSettings } from './module/settings.js';
+import { registerSettings } from './settings.js';
 
 Hooks.once('init', async function() {
 	console.log('playlist-drag-and-drop | Initializing playlist-drag-and-drop');
@@ -7,9 +7,9 @@ Hooks.once('init', async function() {
 	registerSettings();
 });
 
-Hooks.on("renderPlaylistDirectory", (app, html: JQuery, data) => {
+Hooks.on("renderPlaylistDirectory", (app, html, data) => {
 	const soundElements = html.find('li.sound.flexrow');
-	soundElements.each((index: number, el: HTMLElement) => {
+	soundElements.each((index, el) => {
 		try {
 			const dataSoundId = el.getAttribute('data-sound-id');
 
@@ -18,14 +18,14 @@ Hooks.on("renderPlaylistDirectory", (app, html: JQuery, data) => {
 			}
 	
 			el.draggable = true;
-			el.ondragend = (e: DragEvent) => addSoundToSoundLayer(dataSoundId, e);
+			el.ondragend = (e) => addSoundToSoundLayer(dataSoundId, e);
 		} catch (e) {
 			console.error(`playlist-drag-and-drop | Failed to make sound element ${el} draggable. Error: ${e}`);
 		}
 	});
 });
 
-const addSoundToSoundLayer = (dataSoundId: string, e: DragEvent) => {
+const addSoundToSoundLayer = (dataSoundId, e) => {
 	const soundPath = getSoundPathFromId(dataSoundId);
 
 	if (!soundPath) {
@@ -33,7 +33,7 @@ const addSoundToSoundLayer = (dataSoundId: string, e: DragEvent) => {
 		return;
 	}
 
-	var data: AmbientSoundObject = {
+	var data = {
         t: "l",
 		x: 0,
 		y: 0,
@@ -46,21 +46,20 @@ const addSoundToSoundLayer = (dataSoundId: string, e: DragEvent) => {
 
 	convertXYtoCanvas(data, e);
     AmbientSound.create(data);
-	canvas.layers[9].activate();
+	canvas.layers[8].activate();
 };
 
-const getSoundPathFromId = (soundId: string): string => {
+const getSoundPathFromId = (soundId) => {
 	try {
-		const playlistSounds = Array.from(game.playlists.values()).flatMap((playlist: Playlist) => playlist.sounds);
-		return playlistSounds.find(soundObject => soundObject._id === soundId).path;
+		const playlistSounds = Array.from(game.playlists.values()).flatMap((playlist) => Array.from(playlist.sounds.values()));
+		return playlistSounds.find(playlistSound => playlistSound.id === soundId).path;
 	} catch (e) {
 		console.error(`playlist-drag-and-drop | Failed to get sound object from soundId: ${soundId}. Error: ${e}`);
 		return '';
 	}
 };
 
-// Function Credit - https://github.com/cswendrowski/FoundryVTT-Drag-Upload/blob/master/dragupload.js
-const convertXYtoCanvas = (data: AmbientSoundObject, event: DragEvent) => {
+const convertXYtoCanvas = (data, event) => {
     const [x, y] = [event.clientX, event.clientY];
     const t = canvas.stage.worldTransform;
     data.x = (x - t.tx) / canvas.stage.scale.x;
