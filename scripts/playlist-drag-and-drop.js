@@ -46,13 +46,13 @@ const addSoundToSoundLayer = (dataSoundId, e) => {
 
 	convertXYtoCanvas(data, e);
     AmbientSound.create(data);
-	canvas.layers[9].activate();
+	canvas.layers[8].activate();
 };
 
 const getSoundPathFromId = (soundId) => {
 	try {
-		const playlistSounds = Array.from(game.playlists.values()).flatMap((playlist) => playlist.sounds);
-		return playlistSounds.find(soundObject => soundObject._id === soundId).path;
+		const playlistSounds = Array.from(game.playlists.values()).flatMap((playlist) => Array.from(playlist.sounds.values()));
+		return playlistSounds.find(playlistSound => playlistSound.id === soundId).path;
 	} catch (e) {
 		console.error(`playlist-drag-and-drop | Failed to get sound object from soundId: ${soundId}. Error: ${e}`);
 		return '';
