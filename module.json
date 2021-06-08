@@ -11,12 +11,7 @@
       "url": "https://github.com/gsimon2"
     }
   ],
-  "esmodules": [
-    "playlist-drag-and-drop.js"
-  ],
-  "styles": [
-    "playlist-drag-and-drop.css"
-  ],
+  "esmodules": ["scripts/playlist-drag-and-drop.js"],
   "minimumCoreVersion": "0.7.0",
   "compatibleCoreVersion": "0.7.9",
   "url": "https://github.com/gsimon2/playlist-drag-and-drop",
