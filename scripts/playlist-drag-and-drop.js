@@ -1,10 +1,16 @@
 import { registerSettings } from './settings.js';
 
+var clientX = 0;
+var clientY = 0;
+
 Hooks.once('init', async function() {
 	console.log('playlist-drag-and-drop | Initializing playlist-drag-and-drop');
 
 	// Register custom module settings
 	registerSettings();
+
+	// Handle firefox not populating client coordinates on drag events
+	document.ondragover = (e) => {clientX = e.clientX; clientY = e.clientY;};
 });
 
 Hooks.on("renderPlaylistDirectory", (app, html, data) => {
@@ -45,7 +51,7 @@ const addSoundToSoundLayer = (dataSoundId, e) => {
     };
 
 	convertXYtoCanvas(data, e);
-    AmbientSound.create(data);
+	canvas.scene.createEmbeddedDocuments('AmbientSound', [data], {});
 	canvas.layers[8].activate();
 };
 
@@ -60,7 +66,7 @@ const getSoundPathFromId = (soundId) => {
 };
 
 const convertXYtoCanvas = (data, event) => {
-    const [x, y] = [event.clientX, event.clientY];
+    const [x, y] = [event.clientX || clientX, event.clientY || clientY];
     const t = canvas.stage.worldTransform;
     data.x = (x - t.tx) / canvas.stage.scale.x;
     data.y = (y - t.ty) / canvas.stage.scale.y;
