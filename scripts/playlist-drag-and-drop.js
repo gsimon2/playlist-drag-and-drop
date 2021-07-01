@@ -45,7 +45,7 @@ const addSoundToSoundLayer = (dataSoundId, e) => {
     };
 
 	convertXYtoCanvas(data, e);
-    AmbientSound.create(data);
+	canvas.scene.createEmbeddedDocuments('AmbientSound', [data], {});
 	canvas.layers[8].activate();
 };
 
