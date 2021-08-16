@@ -1,3 +1,5 @@
+import constants from '../constants.js'; 
+
 export const registerSettings = () => {
     game.settings.register('playlist-drag-and-drop', 'enable-easing', {
         name: 'Enable sound easing',
@@ -33,5 +35,24 @@ export const registerSettings = () => {
         config: true,
         default: 1.0,
         type: Number,
+    });
+
+    game.settings.register('playlist-drag-and-drop', 'require-hotkey', {
+        name: `Require key to enable drag actions`,
+        hint: `Require a hotkey to be held to enable the the dragging of a sound track onto a scene`,
+        scope: 'world',
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
+    game.settings.register('playlist-drag-and-drop', 'hotkey', {
+        name: `Hotkey`,
+        hint: `Sets the hotkey that enables drag actions, if required.`,
+        scope: 'world',
+        config: true,
+        default: constants.hotkeyOptions.CTRL,
+        type: String,
+        choices: constants.hotkeyOptions
     });
 };
