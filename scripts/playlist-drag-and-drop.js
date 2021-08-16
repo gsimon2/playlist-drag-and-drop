@@ -23,8 +23,6 @@ Hooks.on("renderPlaylistDirectory", (app, html, data) => {
 			if (!dataSoundId) {
 				return;
 			}
-
-			console.log(el.attributes)
 	
 			el.draggable = true;
 			el.ondragstart = (e) => checkHotKeyRequirements(e);
