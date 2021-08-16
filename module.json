@@ -2,7 +2,7 @@
   "name": "playlist-drag-and-drop",
   "title": "Playlist Drag and Drop",
   "description": "Allows dragging playlist soundtracks from the sidebar and dropping them onto the map as ambient sounds.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "author": "GS",
   "authors": [
     {
@@ -14,11 +14,11 @@
   "esmodules": ["scripts/playlist-drag-and-drop.js"],
   "styles": ["styles/playlist-drag-and-drop.css"],
   "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "0.8.8",
   "url": "https://github.com/gsimon2/playlist-drag-and-drop",
   "bugs": "https://github.com/gsimon2/playlist-drag-and-drop/issues",
 	"changelog": "https://github.com/gsimon2/playlist-drag-and-drop/releases",
-	"download": "https://github.com/gsimon2/playlist-drag-and-drop/releases/download/1.1.1/module.zip",
-	"manifest": "https://github.com/gsimon2/playlist-drag-and-drop/releases/download/1.1.1/module.json",
+	"download": "https://github.com/gsimon2/playlist-drag-and-drop/releases/download/1.2.0/module.zip",
+	"manifest": "https://github.com/gsimon2/playlist-drag-and-drop/releases/download/1.2.0/module.json",
 	"readme": "https://raw.githubusercontent.com/gsimon2/playlist-drag-and-drop/main/README.md"
 }
