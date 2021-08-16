@@ -1,3 +1,4 @@
+import constants from '../constants.js';
 import { registerSettings } from './settings.js';
 
 var clientX = 0;
@@ -24,12 +25,32 @@ Hooks.on("renderPlaylistDirectory", (app, html, data) => {
 			}
 	
 			el.draggable = true;
+			el.ondragstart = (e) => checkHotKeyRequirements(e);
 			el.ondragend = (e) => addSoundToSoundLayer(dataSoundId, e);
 		} catch (e) {
 			console.error(`playlist-drag-and-drop | Failed to make sound element ${el} draggable. Error: ${e}`);
 		}
 	});
 });
+
+const checkHotKeyRequirements = (e) => {
+	if (game.settings.get('playlist-drag-and-drop', 'require-hotkey')) {
+		const hotkey = constants.hotkeyOptions[game.settings.get('playlist-drag-and-drop', 'hotkey')];
+
+		switch (hotkey) {
+			case constants.hotkeyOptions.CTRL:
+				return e.ctrlKey && !e.altKey;
+			case constants.hotkeyOptions.ALT:
+				return e.altKey && !e.ctrlKey;
+			case constants.hotkeyOptions.CTRLALT:
+				return e.ctrlKey && e.altKey;
+			default:
+				return false;
+		}
+	}
+
+	return true;
+};
 
 const addSoundToSoundLayer = (dataSoundId, e) => {
 	const soundPath = getSoundPathFromId(dataSoundId);
