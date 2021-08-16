@@ -5,6 +5,8 @@
 
 A simple module for [FoundryVtt](https://foundryvtt.com/) that allows dragging playlist soundtracks from the sidebar and dropping them onto the map as ambient sounds.
 
-Default sound volume, radius, eaasing, and repeat settings can be configured via the configure settings menu.
+Default sound volume, radius, eaasing, and repeat settings can be configured via the configure settings menu. 
+
+If desired the CTRL, ALT, or CTRL + ALT keys can be require to enable to dragging of sound tracks onto the scene. This was requested to promote higher compatibility with other modules that impact the playlist functionality.
 
 ![Playlist Drag and Drop Demo](./playlist-drag-and-drop-demo.gif)
